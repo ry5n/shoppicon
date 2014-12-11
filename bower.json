@@ -9,6 +9,7 @@
   "private": true,
   "ignore": [
     "**/.*",
+    "**/*.ai",
     "node_modules",
     "bower_components",
     "test",
