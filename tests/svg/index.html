@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <title>Tests for the SVG Shoppicon distribution</title>
+    <style>
+        #svg-sprite {
+            background: red;
+        }
+
+        html {
+            font-size: 100%;
+            line-height: 24px;
+            font-family: sans-serif;
+        }
+
+        body {
+            max-width: 40rem;
+            margin: 1.5rem auto;
+        }
+
+        a {
+            color: hsl(200, 100%, 43%);
+            text-decoration: none;
+        }
+
+        .Icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .Icon--small {
+            width: 18px;
+            height: 18px;
+        }
+
+        .u-align-middle {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div hidden><svg id="svg-sprite" data-src="/dist/svg/shoppicon.svg"></svg></div>
+
+    <p>
+        <a href="#"><span class="u-align-middle">Expand </span>
+        <svg class="Icon u-align-middle"><use xlink:href="#chevron-down" /></svg>
+    </p>
+
+    <p>
+        <a href="#"><span class="u-align-middle">Read more </span>
+        <svg class="Icon u-align-middle"><use xlink:href="#chevron-circle-right" /></svg>
+    </p>
+
+    <script src="/bower_components/svg-injector/dist/svg-injector.min.js"></script>
+    <script>
+        SVGInjector(document.querySelector('#svg-sprite'));
+    </script>
+</body>
+</html>

@@ -1,38 +1,60 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
+    var buildDir = 'dist';
+
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
         svgmin: {
-            options: {
-                plugins: [
-                    {removeViewBox: false},
-                    {removeUselessStrokeAndFill: false}
-                ]
-            },
-            dist: {
+            pre: {
+                options: {
+                    plugins: [
+                        {removeViewBox: false},
+                        {removeUselessStrokeAndFill: false}
+                    ]
+                },
                 files: [{
+                    expand: true,
+                    flatten: true,
                     src: 'src/svg/*.svg',
-                    dest: '_build/'
+                    dest: 'temp',
+                    rename: function(dest, src) {
+                        return dest + '/' + src.split(/[\\\/]/).pop().replace(/_/g, '-');
+                    }
+                }]
+            },
+
+            post: {
+                options: {
+                    plugins: [
+                        {removeViewBox: false},
+                        {removeUselessStrokeAndFill: false},
+                        {removeTitle: true},
+                        {cleanupIDs: false}
+                    ]
+                },
+                files: [{
+                    expand: true,
+                    src: buildDir + '/**/*.svg'
                 }]
             }
         },
 
         svgstore: {
             options: {},
-            default : {
+            default: {
                 files: [{
-                    src: '_build/*.svg',
-                    dest: 'build/shoppicon.svg'
+                    src: 'temp/*.svg',
+                    dest: buildDir + '/svg/shoppicon.svg'
                 }],
             },
         },
 
-        clean: ['_build']
+        clean: ['temp']
     });
 
     // Default task
-    grunt.registerTask('default', ['svgmin']);
+    grunt.registerTask('default', ['svgmin:pre', 'svgstore', 'svgmin:post', 'clean']);
 };

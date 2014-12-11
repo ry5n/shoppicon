@@ -1,0 +1,20 @@
+{
+  "name": "shoppicon",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ry5n/ecomicon",
+  "authors": [
+    "Ryan Frederick <ryan@ryanfrederick.com>"
+  ],
+  "license": "CC BY 4.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "svg-injector": "~1.1.2"
+  }
+}
