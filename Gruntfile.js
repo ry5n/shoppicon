@@ -1,60 +1,56 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
-    var buildDir = 'dist';
-
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        svgmin: {
-            pre: {
-                options: {
-                    plugins: [
-                        {removeViewBox: false},
-                        {removeUselessStrokeAndFill: false}
-                    ]
-                },
+        clean_ai_svg: {
+            default: {
                 files: [{
                     expand: true,
                     flatten: true,
-                    src: 'src/svg/*.svg',
+                    src: ['src/**/*.svg', '!src/template.ai.svg'],
                     dest: 'temp',
                     rename: function(dest, src) {
-                        return dest + '/' + src.split(/[\\\/]/).pop().replace(/_/g, '-');
+                        return dest + '/' + src.replace('.ai.svg', '.svg');
                     }
                 }]
-            },
+            }
+        },
 
-            post: {
+        svgstore: {
+            build_sprite: {
+                files: [{
+                    src: 'temp/**/*.svg',
+                    dest: 'svg-sprite/shoppicon.svg'
+                }],
+            },
+        },
+
+        svgmin: {
+            clean_sprite: {
                 options: {
                     plugins: [
-                        {removeViewBox: false},
-                        {removeUselessStrokeAndFill: false},
                         {removeTitle: true},
                         {cleanupIDs: false}
                     ]
                 },
                 files: [{
                     expand: true,
-                    src: buildDir + '/**/*.svg'
+                    src: 'svg-sprite/**/*.svg'
                 }]
             }
-        },
-
-        svgstore: {
-            options: {},
-            default: {
-                files: [{
-                    src: 'temp/*.svg',
-                    dest: buildDir + '/svg/shoppicon.svg'
-                }],
-            },
         },
 
         clean: ['temp']
     });
 
     // Default task
-    grunt.registerTask('default', ['svgmin:pre', 'svgstore', 'svgmin:post', 'clean']);
+    grunt.registerTask('default', [
+        'clean_ai_svg',
+        'svgstore',
+        'svgmin',
+        'clean'
+    ]);
 };

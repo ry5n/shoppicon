@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Tests for the SVG Shoppicon distribution</title>
     <style>
         #svg-sprite {
@@ -34,22 +35,25 @@
             height: 18px;
         }
 
-        .u-align-middle {
-            vertical-align: middle;
+        .Align {
+            display: flex;
+            align-items: center;
+        }
+
+        .Align--inline {
+            display: inline-flex;
         }
     </style>
 </head>
 <body>
-    <div hidden><svg id="svg-sprite" data-src="/dist/svg/shoppicon.svg"></svg></div>
+    <div hidden><svg id="svg-sprite" data-src="/svg-sprite/shoppicon.svg"></svg></div>
 
     <p>
-        <a href="#"><span class="u-align-middle">Expand </span>
-        <svg class="Icon u-align-middle"><use xlink:href="#chevron-down" /></svg>
+        Lorem ipsum <a class="Align Align--inline" href="#">Expand <svg class="Icon"><use xlink:href="#chevron-down" /></a>
     </p>
 
     <p>
-        <a href="#"><span class="u-align-middle">Read more </span>
-        <svg class="Icon u-align-middle"><use xlink:href="#chevron-circle-right" /></svg>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <a class="Align Align--inline" href="#">Read more <svg class="Icon"><use xlink:href="#chevron-circle-right" /></svg></a>
     </p>
 
     <script src="/bower_components/svg-injector/dist/svg-injector.min.js"></script>
