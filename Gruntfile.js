@@ -1,17 +1,18 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
+    grunt.loadTasks('tasks');
 
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        clean_ai_svg: {
+        make_svg: {
             default: {
                 files: [{
                     expand: true,
                     flatten: true,
                     src: ['src/**/*.svg', '!src/template.ai.svg'],
-                    dest: 'temp',
+                    dest: 'svg',
                     rename: function(dest, src) {
                         return dest + '/' + src.replace('.ai.svg', '.svg');
                     }
@@ -22,13 +23,25 @@ module.exports = function(grunt) {
         svgstore: {
             build_sprite: {
                 files: [{
-                    src: 'temp/**/*.svg',
+                    src: 'svg/**/*.svg',
                     dest: 'svg-sprite/shoppicon.svg'
                 }],
             },
         },
 
         svgmin: {
+            clean_svg: {
+                options: {
+                    plugins: [
+                        {removeXMLProcInst: false},
+                        {removeDoctype: false}
+                    ]
+                },
+                files: [{
+                    expand: true,
+                    src: 'svg/**/*.svg'
+                }]
+            },
             clean_sprite: {
                 options: {
                     plugins: [
@@ -41,16 +54,14 @@ module.exports = function(grunt) {
                     src: 'svg-sprite/**/*.svg'
                 }]
             }
-        },
-
-        clean: ['temp']
+        }
     });
 
     // Default task
     grunt.registerTask('default', [
-        'clean_ai_svg',
+        'make_svg',
+        'svgmin:clean_svg',
         'svgstore',
-        'svgmin',
-        'clean'
+        'svgmin:clean_sprite'
     ]);
 };

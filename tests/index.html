@@ -16,7 +16,8 @@
 
         body {
             max-width: 40rem;
-            margin: 1.5rem auto;
+            margin: 0 auto;
+            padding: 1.5rem;
         }
 
         a {
@@ -46,14 +47,16 @@
     </style>
 </head>
 <body>
-    <div hidden><svg id="svg-sprite" data-src="/svg-sprite/shoppicon.svg"></svg></div>
+    <div hidden>
+        <svg id="svg-sprite" data-src="/svg-sprite/shoppicon.svg"></svg>
+    </div>
 
     <p>
-        Lorem ipsum <a class="Align Align--inline" href="#">Expand <svg class="Icon"><use xlink:href="#chevron-down" /></a>
+        Lorem ipsum <a class="Align Align--inline" href="#">Expand <svg class="Icon"><use xlink:href="../svg-sprite/shoppicon.svg#chevron-down" /></a>
     </p>
 
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <a class="Align Align--inline" href="#">Read more <svg class="Icon"><use xlink:href="#chevron-circle-right" /></svg></a>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <a class="Align Align--inline" href="#">Read more <svg class="Icon"><use xlink:href="../svg-sprite/shoppicon.svg#chevron-circle-right" /></svg></a>
     </p>
 
     <script src="/bower_components/svg-injector/dist/svg-injector.min.js"></script>
