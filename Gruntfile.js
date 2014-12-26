@@ -48,6 +48,15 @@ module.exports = function(grunt) {
                     src: 'svg-sprite/**/*.svg'
                 }]
             }
+        },
+
+        shoppicon: {
+            default: {
+                files: [{
+                    src: 'svg/**/*.svg',
+                    dest: 'test/icon-sprite.svg'
+                }]
+            }
         }
     });
 
@@ -58,4 +67,6 @@ module.exports = function(grunt) {
         'svgstore',
         'svgmin:clean_sprite'
     ]);
+
+    grunt.registerTask('shoppicon', ['shoppicon']);
 };

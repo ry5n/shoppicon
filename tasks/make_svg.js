@@ -4,9 +4,6 @@
  * Takes SVG files saved from Adobe Illustrator with “Preserve Illustrator
  * Editing Capabilities” and cleans them, preserving *only* the layer with id
  * “exports”.
- *
- * Copyright (c) 2014 Ryan L. Frederick
- * Licensed under the MIT license.
  */
 
 'use strict';
