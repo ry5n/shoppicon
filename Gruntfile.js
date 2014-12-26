@@ -31,12 +31,6 @@ module.exports = function(grunt) {
 
         svgmin: {
             clean_svg: {
-                options: {
-                    plugins: [
-                        {removeXMLProcInst: false},
-                        {removeDoctype: false}
-                    ]
-                },
                 files: [{
                     expand: true,
                     src: 'svg/**/*.svg'
