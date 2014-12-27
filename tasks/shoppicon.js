@@ -7,8 +7,8 @@
 'use strict';
 
 module.exports = function(grunt) {
-    grunt.task.loadNpmTasks('grunt-svgstore');
-    grunt.task.loadNpmTasks('grunt-svgmin');
+    grunt.loadNpmTasks('grunt-svgstore');
+    grunt.loadNpmTasks('grunt-svgmin');
 
     grunt.registerMultiTask('shoppicon', 'TODO Description', function() {
         grunt.config.merge({

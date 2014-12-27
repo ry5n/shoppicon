@@ -5,4 +5,4 @@ tests
 tmp
 bower.json
 Gruntfile.js
-tasks/make_svg.js
+tasks-private
