@@ -4,7 +4,7 @@
   "description": "Icons for ecommerce. Based on Google’s Material Design system icon spec with some art from the open source release.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ry5n/ecomicon.git"
+    "url": "git://github.com/ry5n/shoppicon.git"
   },
   "author": "Ryan L. Frederick",
   "license": "CC BY 4.0",
