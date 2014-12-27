@@ -1,0 +1,8 @@
+bower_components
+node_modules
+src
+tests
+tmp
+bower.json
+Gruntfile.js
+tasks/make_svg.js
