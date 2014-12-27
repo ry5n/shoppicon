@@ -17,56 +17,32 @@ module.exports = function(grunt) {
                         return dest + '/' + src.replace('.ai.svg', '.svg');
                     }
                 }]
-            }
+            },
         },
 
-        svgstore: {
-            build_sprite: {
+        svgmin: {
+            default: {
+                files: [{
+                    expand: true,
+                    src: 'svg/**/*.svg'
+                }]
+            },
+        },
+
+        shoppicon: {
+            svg_sprite: {
                 files: [{
                     src: 'svg/**/*.svg',
                     dest: 'svg-sprite/shoppicon.svg'
                 }],
             },
         },
-
-        svgmin: {
-            clean_svg: {
-                files: [{
-                    expand: true,
-                    src: 'svg/**/*.svg'
-                }]
-            },
-            clean_sprite: {
-                options: {
-                    plugins: [
-                        {removeTitle: true},
-                        {cleanupIDs: false}
-                    ]
-                },
-                files: [{
-                    expand: true,
-                    src: 'svg-sprite/**/*.svg'
-                }]
-            }
-        },
-
-        shoppicon: {
-            default: {
-                files: [{
-                    src: 'svg/**/*.svg',
-                    dest: 'test/icon-sprite.svg'
-                }]
-            }
-        }
     });
 
     // Default task
     grunt.registerTask('default', [
         'make_svg',
-        'svgmin:clean_svg',
-        'svgstore',
-        'svgmin:clean_sprite'
+        'svgmin',
+        'shoppicon:svg_sprite'
     ]);
-
-    grunt.registerTask('shoppicon', ['shoppicon']);
 };
