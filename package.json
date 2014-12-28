@@ -11,8 +11,7 @@
   "dependencies": {
     "grunt": "^0.4.5",
     "grunt-svgmin": "^2.0.0",
-    "grunt-svgstore": "^0.4.1",
-    "path": "^0.4.9"
+    "grunt-svgstore": "^0.4.1"
   },
   "devDependencies": {
     "load-grunt-tasks": "^1.0.0",

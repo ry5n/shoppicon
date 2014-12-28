@@ -21,29 +21,43 @@ module.exports = function(grunt) {
             },
         },
 
-        svgmin: {
+        svgstore: {
             default: {
-                files: [{
-                    expand: true,
-                    src: 'svg/**/*.svg'
-                }]
-            },
-        },
-
-        shoppicon: {
-            svg_sprite: {
                 files: [{
                     src: 'svg/**/*.svg',
                     dest: 'svg-sprite/shoppicon.svg'
                 }],
             },
         },
+
+        svgmin: {
+            post_make_svg: {
+                files: [{
+                    expand: true,
+                    src: 'svg/**/*.svg'
+                }]
+            },
+
+            post_svgstore: {
+                options: {
+                    plugins: [
+                        {removeTitle: true},
+                        {cleanupIDs: false}
+                    ]
+                },
+                files: [{
+                    expand: true,
+                    src: 'svg-sprite/shoppicon.svg'
+                }]
+            },
+        }
     });
 
     // Default task
     grunt.registerTask('default', [
         'make_svg',
-        'svgmin',
-        'shoppicon:svg_sprite'
+        'svgmin:post_make_svg',
+        'svgstore',
+        'svgmin:post_svgstore',
     ]);
 };
