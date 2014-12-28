@@ -14,9 +14,7 @@ module.exports = function(grunt) {
                     flatten: true,
                     src: ['src/**/*.svg', '!src/template.ai.svg'],
                     dest: 'svg',
-                    rename: function(dest, src) {
-                        return dest + '/' + src.replace('.ai.svg', '.svg');
-                    }
+                    ext: '.svg'
                 }]
             },
         },
