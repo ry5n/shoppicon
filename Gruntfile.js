@@ -23,7 +23,7 @@ module.exports = function(grunt) {
             default: {
                 files: [{
                     src: 'svg/**/*.svg',
-                    dest: 'svg-sprite/shoppicon.svg'
+                    dest: 'svg-sprite/<%= pkg.name %>.svg'
                 }],
             },
         },
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    src: 'svg-sprite/shoppicon.svg'
+                    src: 'svg-sprite/<%= pkg.name %>.svg'
                 }]
             },
         }
