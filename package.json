@@ -8,13 +8,13 @@
   },
   "author": "Ryan L. Frederick",
   "license": "CC BY 4.0",
-  "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-svgmin": "^2.0.0",
-    "grunt-svgstore": "^0.4.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "load-grunt-tasks": "^1.0.0",
-    "cheerio": "^0.18.0"
+    "cheerio": "^0.18.0",
+    "grunt": "^0.4.5",
+    "grunt-iconpack": "git://github.com/ry5n/grunt-iconpack.git",
+    "grunt-svgmin": "^2.0.0",
+    "grunt-svgstore": "^0.4.1",
+    "load-grunt-tasks": "^1.0.0"
   }
 }

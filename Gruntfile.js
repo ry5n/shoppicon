@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
-    grunt.loadTasks('tasks-private');
     grunt.loadTasks('tasks');
 
     // Project configuration.
@@ -19,43 +18,23 @@ module.exports = function(grunt) {
             },
         },
 
-        svgstore: {
-            default: {
-                files: [{
-                    src: 'svg/**/*.svg',
-                    dest: 'svg-sprite/<%= pkg.name %>.svg'
-                }],
-            },
-        },
-
         svgmin: {
-            post_make_svg: {
+            default: {
                 files: [{
                     expand: true,
                     src: 'svg/**/*.svg'
                 }]
-            },
+            }
+        },
 
-            post_svgstore: {
-                options: {
-                    plugins: [
-                        {removeTitle: true},
-                        {cleanupIDs: false}
-                    ]
-                },
-                files: [{
-                    expand: true,
-                    src: 'svg-sprite/<%= pkg.name %>.svg'
-                }]
-            },
+        iconpack: {
+            default: {
+                src: 'svg/**/*.svg',
+                dest: 'svg-sprite/<%= pkg.name %>.svg'
+            }
         }
     });
 
     // Default task
-    grunt.registerTask('default', [
-        'make_svg',
-        'svgmin:post_make_svg',
-        'svgstore',
-        'svgmin:post_svgstore',
-    ]);
+    grunt.registerTask('default', ['make_svg', 'svgmin', 'iconpack']);
 };
