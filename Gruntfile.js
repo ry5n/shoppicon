@@ -29,6 +29,9 @@ module.exports = function(grunt) {
 
         iconpack: {
             default: {
+                options: {
+                    svgPrefix: '<%= pkg.name %>-'
+                },
                 src: 'svg/**/*.svg',
                 dest: 'svg-sprite/<%= pkg.name %>.svg'
             }
